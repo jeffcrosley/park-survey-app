@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.npgeek.model.jdbc;
 
 import java.sql.SQLException;
 
