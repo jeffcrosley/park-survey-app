@@ -1,67 +1,115 @@
 package com.techelevator.npgeek.model;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 
 public class Park {
 	
-	private Long parkId;
-	private String name;
-	private String location;
-	private String description;
-	private LocalDate establishDate;
-	private int area;
-	private int annualVisitorCount;
-	private String quote;
+	private String parkCode;
+	private String parkName;
+	private String state;
+	private long acreage;
+	private long elevationInFeet;
+	private BigDecimal milesOfTrail;
+	private long numberOfCampsites;
+	private String climate;
+	private long yearFounded;
+	private long annualVisitorCount;
+	private String inspirationalQuote;
+	private String inspirationalQuoteSource;
+	private String parkDescription;
+	private long entryFee;
+	private long numberOfAnimalSpecies;
 	
-
-	public Long getParkId() {
-		return parkId;
+	public String getParkCode() {
+		return parkCode;
 	}
-	public void setParkId(Long parkId) {
-		this.parkId = parkId;
+	public void setParkCode(String parkCode) {
+		this.parkCode = parkCode;
 	}
-	
-	public String getName() {
-		return name;
+	public String getParkName() {
+		return parkName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setParkName(String parkName) {
+		this.parkName = parkName;
 	}
-	public String getLocation() {
-		return location;
+	public String getState() {
+		return state;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setState(String state) {
+		this.state = state;
 	}
-	public String getDescription() {
-		return description;
+	public long getAcreage() {
+		return acreage;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setAcreage(long acreage) {
+		this.acreage = acreage;
 	}
-	public LocalDate getEstablishDate() {
-		return establishDate;
+	public long getElevationInFeet() {
+		return elevationInFeet;
 	}
-	public void setEstablishDate(LocalDate establishDate) {
-		this.establishDate = establishDate;
+	public void setElevationInFeet(long elevationInFeet) {
+		this.elevationInFeet = elevationInFeet;
 	}
-	public int getArea() {
-		return area;
+	public BigDecimal getMilesOfTrail() {
+		return milesOfTrail;
 	}
-	public void setArea(int area) {
-		this.area = area;
+	public void setMilesOfTrail(BigDecimal milesOfTrail) {
+		this.milesOfTrail = milesOfTrail;
 	}
-	public int getAnnualVisitorCount() {
+	public long getNumberOfCampsites() {
+		return numberOfCampsites;
+	}
+	public void setNumberOfCampsites(long numberOfCampsites) {
+		this.numberOfCampsites = numberOfCampsites;
+	}
+	public String getClimate() {
+		return climate;
+	}
+	public void setClimate(String climate) {
+		this.climate = climate;
+	}
+	public long getYearFounded() {
+		return yearFounded;
+	}
+	public void setYearFounded(long yearFounded) {
+		this.yearFounded = yearFounded;
+	}
+	public long getAnnualVisitorCount() {
 		return annualVisitorCount;
 	}
-	public void setAnnualVisitorCount(int annualVisitorCount) {
+	public void setAnnualVisitorCount(long annualVisitorCount) {
 		this.annualVisitorCount = annualVisitorCount;
 	}
-	public String getQuote() {
-		return quote;
+	public String getInspirationalQuote() {
+		return inspirationalQuote;
 	}
-	public void setQuote(String quote) {
-		this.quote = quote;
+	public void setInspirationalQuote(String inspirationalQuote) {
+		this.inspirationalQuote = inspirationalQuote;
 	}
+	public String getInspirationalQuoteSource() {
+		return inspirationalQuoteSource;
+	}
+	public void setInspirationalQuoteSource(String inspirationalQuoteSource) {
+		this.inspirationalQuoteSource = inspirationalQuoteSource;
+	}
+	public String getParkDescription() {
+		return parkDescription;
+	}
+	public void setParkDescription(String parkDescription) {
+		this.parkDescription = parkDescription;
+	}
+	public long getEntryFee() {
+		return entryFee;
+	}
+	public void setEntryFee(long entryFee) {
+		this.entryFee = entryFee;
+	}
+	public long getNumberOfAnimalSpecies() {
+		return numberOfAnimalSpecies;
+	}
+	public void setNumberOfAnimalSpecies(long numberOfAnimalSpecies) {
+		this.numberOfAnimalSpecies = numberOfAnimalSpecies;
+	}
+	
 	
 }

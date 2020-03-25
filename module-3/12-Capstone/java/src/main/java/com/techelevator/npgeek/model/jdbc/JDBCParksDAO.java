@@ -40,14 +40,22 @@ public class JDBCParksDAO implements ParksDAO {
 	private Park mapRowToPark(SqlRowSet result) {
 		Park park = new Park();
 		
-		park.setParkId(result.getLong("park_id"));
-		park.setName(result.getString("name"));
-		park.setLocation(result.getString("location"));
-		park.setEstablishDate(result.getDate("establish_date").toLocalDate());
-		park.setArea(result.getInt("area"));
-		park.setAnnualVisitorCount(result.getInt("annualVisitorCount"));
-		park.setDescription(result.getString("description"));
-		park.setQuote(result.getString("quote"));
+		park.setParkCode(result.getString("parkcode"));
+		park.setParkName(result.getString("parkname"));
+		park.setState(result.getString("state"));
+		park.setAcreage(result.getLong("acreage"));
+		park.setElevationInFeet(result.getLong("elevationinfeet"));
+		park.setMilesOfTrail(result.getBigDecimal("milesoftrail"));
+		park.setNumberOfCampsites(result.getLong("numberofcampsites"));
+		park.setClimate(result.getString("climate"));
+		park.setYearFounded(result.getLong("yearfounded"));
+		park.setAnnualVisitorCount(result.getLong("annualvisitorcount"));
+		park.setInspirationalQuote(result.getString("inspirationalquote"));
+		park.setInspirationalQuoteSource(result.getString("inspirationalquotesource"));
+		park.setParkDescription(result.getString("parkdescription"));
+		park.setEntryFee(result.getLong("entryfee"));
+		park.setNumberOfAnimalSpecies(result.getLong("numberofanimalspecies"));
+		
 		return park;
 	}
 
