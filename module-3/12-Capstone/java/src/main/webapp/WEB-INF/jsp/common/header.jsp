@@ -11,6 +11,7 @@
 	</head>
 	<body>
 		<header>
-			<h1>National Park Geek</h1>
+			<c:url var="headerImgURL" value="/img/logo.png"/>
+			<img src="${ headerImgURL }">
 		</header>
 		<main>

@@ -1,4 +1,4 @@
-package com.techelevator.npgeek.dao;
+package com.techelevator.npgeek.model.jdbc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,18 +9,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import com.techelevator.npgeek.model.Park;
+import com.techelevator.npgeek.model.ParksDAO;
 
-public class JDBCParkDao implements ParkDao {
-
-
+public class JDBCParksDAO implements ParksDAO {
 
 	private JdbcTemplate jdbcTemplate;
 
-	public JDBCParkDao(DataSource dataSource) {
+	public JDBCParksDAO(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
 	static final String queryAllParksAlphabetically = "SELECT * FROM park";
+	
 	@Override
 	public List<Park> getAllParks() {
 		
@@ -36,6 +36,7 @@ public class JDBCParkDao implements ParkDao {
 		
 		return parks;
 	}
+	
 	private Park mapRowToPark(SqlRowSet result) {
 		Park park = new Park();
 		
