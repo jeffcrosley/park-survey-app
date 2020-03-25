@@ -1,38 +1,52 @@
 package com.techelevator.npgeek.model;
 
-import java.time.LocalDate;
 
 public class Weather {
 	
-	private int parkId;
-	private LocalDate dateToday;
-	private int lowTemp;
-	private int highTemp;
+	private String parkCode;
+	private int fiveDayForecastValue;
+	private double farenheitLow;
+	private double fahrenheitHigh;
+	private double celsiusLow;
+	private double celsiusHigh;
 	private String forecast;
 	
-	public int getParkId() {
-		return parkId;
+	
+	public String getParkCode() {
+		return parkCode;
 	}
-	public void setParkId(int parkId) {
-		this.parkId = parkId;
+	public void setParkCode(String parkCode) {
+		this.parkCode = parkCode;
 	}
-	public LocalDate getDateToday() {
-		return dateToday;
+	public int getFiveDayForecastValue() {
+		return fiveDayForecastValue;
 	}
-	public void setDateToday(LocalDate dateToday) {
-		this.dateToday = dateToday;
+	public void setFiveDayForecastValue(int fiveDayForecastValue) {
+		this.fiveDayForecastValue = fiveDayForecastValue;
 	}
-	public int getLowTemp() {
-		return lowTemp;
+	public double getFarenheitLow() {
+		return farenheitLow;
 	}
-	public void setLowTemp(int lowTemp) {
-		this.lowTemp = lowTemp;
+	public void setFarenheitLow(double farenheitLow) {
+		this.farenheitLow = farenheitLow;
 	}
-	public int getHighTemp() {
-		return highTemp;
+	public double getFahrenheitHigh() {
+		return fahrenheitHigh;
 	}
-	public void setHighTemp(int highTemp) {
-		this.highTemp = highTemp;
+	public void setFahrenheitHigh(double fahrenheitHigh) {
+		this.fahrenheitHigh = fahrenheitHigh;
+	}
+	public double getCelsiusLow() {
+		return celsiusLow;
+	}
+	public void setCelsiusLow(double celsiusLow) {
+		this.celsiusLow = celsiusLow;
+	}
+	public double getCelsiusHigh() {
+		return celsiusHigh;
+	}
+	public void setCelsiusHigh(double celsiusHigh) {
+		this.celsiusHigh = celsiusHigh;
 	}
 	public String getForecast() {
 		return forecast;

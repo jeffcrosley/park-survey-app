@@ -1,10 +1,11 @@
 package com.techelevator.npgeek.dao;
 
-import com.techelevator.npgeek.model.Park;
 import java.util.List;
 
+import com.techelevator.npgeek.model.Park;
 
-public interface SurveyDao{
+
+public interface ParkDAO{
 
 	public List<Park> getAllParks(); 
 	
