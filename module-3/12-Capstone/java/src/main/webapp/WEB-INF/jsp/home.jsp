@@ -5,7 +5,6 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp">
 	<c:param name="pageTitle" value="Home" />
 </c:import>
-<!-- JEFF TODO: FIX THIS AND OTHER JSPS TO DO A DYNAMIC HEADER TITLE VIA THE CONTROLLER -->
 
 <c:forEach var="park" items="${ parks }">
 

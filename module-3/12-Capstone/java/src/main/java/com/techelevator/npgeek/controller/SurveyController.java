@@ -12,13 +12,13 @@ import com.techelevator.npgeek.model.Park;
 import com.techelevator.npgeek.model.ParkDAO;
 
 @Controller
-public class HomeController {
+public class SurveyController {
 
 	@Autowired
 	ParkDAO parkDAO;
 	
-	@RequestMapping(value= {"/", "/home"}, method=RequestMethod.GET)
-	public String displayHomepage(
+	@RequestMapping(value="/survey", method=RequestMethod.GET)
+	public String displaySurveyPage(
 				ModelMap model
 			) 
 	{
@@ -26,6 +26,23 @@ public class HomeController {
 		
 		model.put("parks", parks);
 		
-		return "home";
+		return "survey";
+	}
+	
+	
+	@RequestMapping(value="/survey", method=RequestMethod.POST)
+	public String submitReviewToFavorites(
+				ModelMap model
+			)
+	{
+		return "redirect:/favorites";
+	}
+	
+	@RequestMapping(value="/favorites", method=RequestMethod.GET)
+	public String displayFavoritesPage(
+				ModelMap model
+			)
+	{
+		return "favorites";
 	}
 }

@@ -1,9 +1,14 @@
 package com.techelevator.npgeek.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Survey {
 
 	private long surveyId;
+	
+	@NotBlank(message="Favorite Park is Required")
 	private String parkCode;
+	
 	private String emailAddress;
 	private String state;
 	private String activityLevel;

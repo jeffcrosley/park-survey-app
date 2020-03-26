@@ -18,9 +18,12 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Survey</a></li>
-					<li><a href="#">Favorites</a></li>
+					<c:url var="homeURL" value="/home"/>
+					<c:url var="surveyURL" value="/survey"/>
+					<c:url var="favoritesURL" value="/favorites"/>
+					<li><a href="${ homeURL }">Home</a></li>
+					<li><a href="${ surveyURL }">Survey</a></li>
+					<li><a href="${ favoritesURL }">Favorites</a></li>
 				</ul>
 			</nav>
 		</header>

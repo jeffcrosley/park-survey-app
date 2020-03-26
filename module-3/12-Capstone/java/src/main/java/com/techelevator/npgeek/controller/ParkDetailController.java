@@ -1,6 +1,6 @@
 package com.techelevator.npgeek.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,20 +12,22 @@ import com.techelevator.npgeek.model.Park;
 import com.techelevator.npgeek.model.ParkDAO;
 
 @Controller
-public class HomeController {
+public class ParkDetailController {
 
 	@Autowired
 	ParkDAO parkDAO;
 	
-	@RequestMapping(value= {"/", "/home"}, method=RequestMethod.GET)
-	public String displayHomepage(
+	@RequestMapping(value="/parkDetail", method=RequestMethod.GET)
+	public String displayParkDetail(
+				HttpServletRequest request,
 				ModelMap model
 			) 
 	{
-		List<Park> parks = parkDAO.getAllParks();
+		String currentParkCode = request.getParameter("parkCode");
+		Park park = parkDAO.getParkByCode(currentParkCode);
 		
-		model.put("parks", parks);
+		model.put("park", park);
 		
-		return "home";
+		return "parkDetail";
 	}
 }
