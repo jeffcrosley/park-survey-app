@@ -1,5 +1,6 @@
 package com.techelevator.npgeek.model;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class Survey {
@@ -9,8 +10,14 @@ public class Survey {
 	@NotBlank(message="Favorite Park is Required")
 	private String parkCode;
 	
+	@NotBlank(message="Email is Required")
+	@Email(message="Email must be a valid email address")
 	private String emailAddress;
+	
+	@NotBlank(message="State is Required")
 	private String state;
+	
+	@NotBlank(message="Activity Level is Required")
 	private String activityLevel;
 	
 	
