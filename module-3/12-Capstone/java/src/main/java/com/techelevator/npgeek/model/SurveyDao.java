@@ -1,6 +1,5 @@
-package com.techelevator.npgeek.dao;
+package com.techelevator.npgeek.model;
 
-import com.techelevator.npgeek.model.Park;
 import java.util.List;
 
 

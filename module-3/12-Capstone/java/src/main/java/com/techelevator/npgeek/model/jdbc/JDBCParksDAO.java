@@ -7,10 +7,12 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.npgeek.model.Park;
 import com.techelevator.npgeek.model.ParksDAO;
 
+@Component
 public class JDBCParksDAO implements ParksDAO {
 
 	private JdbcTemplate jdbcTemplate;
