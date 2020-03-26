@@ -10,7 +10,7 @@
 
 	<div class="park-tile">
 	
-		<c:url var="parkDetailURL" value="/parkDetail?${ park.parkCode }"/>
+		<c:url var="parkDetailURL" value="/parkDetail?parkCode=${ park.parkCode }"/>
 	    <c:url var="parkImg" value="/img/parks/${ fn:toLowerCase(park.parkCode) }.jpg"/>
 	    <a href="${ parkDetailURL }"><img src="${ parkImg }" alt="park image"></a>
 	

@@ -10,22 +10,14 @@
 
 <form:form modelAttribute="survey" action="${ surveyURL }" method="POST" >
 
-<!--  The name of the park, email, residence state, and activity level are all required fields and must be validated -->
-<!-- <select id="cars" name="cars"> -->
-<!--   <option value="volvo">Volvo</option> -->
-<!--   <option value="saab">Saab</option> -->
-<!--   <option value="fiat">Fiat</option> -->
-<!--   <option value="audi">Audi</option> -->
-<!-- </select> -->
-
 	<div class="form-group">
-		<form:label path="favoritePark">Favorite National Park</form:label>
-		<form:select path="favoritePark">
+		<form:label path="parkCode">Favorite National Park</form:label>
+		<form:select path="parkCode">
 			<c:forEach var="park" items="${ parks }">
-				<form:option value="${ park.name }"><c:out value="${ park.name }"/></form:option>
+				<form:option value="${ park.parkName }"><c:out value="${ park.parkName }"/></form:option>
 			</c:forEach>
 		</form:select>
-		<form:errors path="favoritePark"/>
+		<form:errors path="parkCode"/>
 	</div>
 	
 <!-- 	<div class="form-group"> -->

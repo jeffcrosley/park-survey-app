@@ -35,11 +35,10 @@ public class JDBCParksDAO implements ParkDAO {
 		return parks;
 	}
 
-
-	 @Override
+	@Override
 	public Park getParkByCode(String parkCode) {
 		 	Park park = new Park();
-	        SqlRowSet result = jdbcTemplate.queryForRowSet("`SELECT * FROM park WHERE parkcode = ?", parkCode);
+	        SqlRowSet result = jdbcTemplate.queryForRowSet("SELECT * FROM park WHERE parkcode = ?", parkCode);
 	        if (result.next()) {
 	            return mapRowToPark(result);
 	        }
