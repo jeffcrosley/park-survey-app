@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import com.techelevator.npgeek.model.Survey;
-import com.techelevator.npgeek.model.SurveyDAO;
+import com.techelevator.npgeek.model.dao.SurveyDAO;
 
 public class JDBCSurveyDAO implements SurveyDAO {
 

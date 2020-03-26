@@ -8,10 +8,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.npgeek.model.Weather;
-import com.techelevator.npgeek.model.WeatherDAO;
+import com.techelevator.npgeek.model.dao.WeatherDAO;
 
+@Component
 public class JDBCWeatherDAO implements WeatherDAO {
 
 	private JdbcTemplate jdbcTemplate;
@@ -33,15 +35,16 @@ public class JDBCWeatherDAO implements WeatherDAO {
 		return fiveDayWeather;
 	}
 
+	
 	private Weather mapRowToWeather(SqlRowSet results) {
 		Weather theWeather;
 		theWeather = new Weather();
 		theWeather.setParkCode(results.getString("parkcode"));
 		theWeather.setFiveDayForecastValue(results.getInt("fivedayforecastvalue"));
 		theWeather.setFarenheitLow(results.getDouble("low"));
-		theWeather.setFahrenheitHigh(results.getDouble("high"));
+		theWeather.setFahrenheitHigh(results.getDouble("high")); // Fahrenheit 
 		theWeather.setCelsiusLow((results.getDouble("low")-32)*5/9);
-		theWeather.setCelsiusHigh((results.getDouble("high")-32)*5/9);
+		theWeather.setCelsiusHigh((results.getDouble("high")-32)*5/9); //Celsius
 		theWeather.setForecast(results.getString("forecast"));
 		return theWeather;
 	}
