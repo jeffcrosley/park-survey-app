@@ -1,6 +1,8 @@
-package com.techelevator.npgeek.model;
+package com.techelevator.npgeek.model.dao;
 
 import java.util.List;
+
+import com.techelevator.npgeek.model.Park;
 
 
 public interface ParkDAO{

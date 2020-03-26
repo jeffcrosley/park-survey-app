@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.techelevator.npgeek.model.Park;
-import com.techelevator.npgeek.model.ParkDAO;
+import com.techelevator.npgeek.model.dao.ParkDAO;
 
 @Controller
 public class HomeController {
