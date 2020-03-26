@@ -9,8 +9,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import com.techelevator.npgeek.dao.ParkDAO;
 import com.techelevator.npgeek.model.Park;
+import com.techelevator.npgeek.model.ParkDAO;
 
 
 @Component
@@ -34,7 +34,12 @@ public class JDBCParksDAO implements ParkDAO {
 		}		
 		return parks;
 	}
-	
+
+	public Park getParkByCode(String parkCode) {
+		// TODO METHOD NEEDS DEFINITION
+		return null;
+	}
+		
 	private Park mapRowToPark(SqlRowSet result) {
 		Park park = new Park();
 		park.setParkCode(result.getString("parkcode"));

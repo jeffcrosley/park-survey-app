@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import com.techelevator.npgeek.dao.SurveyDAO;
 import com.techelevator.npgeek.model.Survey;
+import com.techelevator.npgeek.model.SurveyDAO;
 
 public class JDBCSurveyDAO implements SurveyDAO {
 

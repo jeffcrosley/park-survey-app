@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import com.techelevator.npgeek.dao.WeatherDAO;
 import com.techelevator.npgeek.model.Weather;
+import com.techelevator.npgeek.model.WeatherDAO;
 
 public class JDBCWeatherDAO implements WeatherDAO {
 

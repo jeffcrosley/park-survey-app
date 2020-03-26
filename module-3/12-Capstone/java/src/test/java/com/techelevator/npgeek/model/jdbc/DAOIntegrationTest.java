@@ -51,6 +51,23 @@ public abstract class DAOIntegrationTest {
 	protected static final long TEST_PARK_2_ANIMALS = 222000;
 	
 	
+	protected static final String TEST_PARK_3_PARKCODE = "park3Code";
+	protected static final String TEST_PARK_3_PARKNAME = "park3Name";
+	protected static final String TEST_PARK_3_STATE = "park3State";
+	protected static final long TEST_PARK_3_ACREAGE = 300000;
+	protected static final long TEST_PARK_3_ELEVATION = 330000;
+	protected static final BigDecimal TEST_PARK_3_MILESOFTRAIL = new BigDecimal("303000.0");
+	protected static final long TEST_PARK_3_CAMPSITES = 300300;
+	protected static final String TEST_PARK_3_CLIMATE = "park3Climate";
+	protected static final long TEST_PARK_3_YEARFOUNDED = 300030;
+	protected static final long TEST_PARK_3_ANNUALVISITORS = 300003;
+	protected static final String TEST_PARK_3_QUOTE = "park3Quote";
+	protected static final String TEST_PARK_3_QUOTESOURCE = "park3QuoteSource";
+	protected static final String TEST_PARK_3_DESCRIPTION = "park3Description";
+	protected static final long TEST_PARK_3_FEE = 330000;
+	protected static final long TEST_PARK_3_ANIMALS = 333000;
+	
+	
 	/* Using this particular implementation of DataSource so that
 	 * every database interaction is part of the same database
 	 * session and hence the same database transaction */
@@ -84,7 +101,7 @@ public abstract class DAOIntegrationTest {
 
 	/* This method provides access to the DataSource for subclasses so that
 	 * they can instantiate a DAO for testing */
-	public DataSource getDataSource() {
+	protected DataSource getDataSource() {
 		return dataSource;
 	}
 	

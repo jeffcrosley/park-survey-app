@@ -1,6 +1,4 @@
-package com.techelevator.npgeek.dao;
-
-import com.techelevator.npgeek.model.Weather;
+package com.techelevator.npgeek.model;
 
 import java.util.List;
 

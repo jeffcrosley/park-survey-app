@@ -1,8 +1,6 @@
-package com.techelevator.npgeek.dao;
+package com.techelevator.npgeek.model;
 
 import java.util.List;
-
-import com.techelevator.npgeek.model.Survey;
 
 
 public interface SurveyDAO{

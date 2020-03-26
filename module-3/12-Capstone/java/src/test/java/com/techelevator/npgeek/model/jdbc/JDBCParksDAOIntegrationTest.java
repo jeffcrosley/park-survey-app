@@ -7,7 +7,7 @@ import com.techelevator.npgeek.model.Park;
 
 public class JDBCParksDAOIntegrationTest extends DAOIntegrationTest {
 	
-	private JDBCParksDAO dao;	
+	private JDBCParksDAO dao;
 	
 	@Before
 	public void setup() {
@@ -41,6 +41,22 @@ public class JDBCParksDAOIntegrationTest extends DAOIntegrationTest {
 
 		assertParksAreEqual(expected1, actual1);
 		assertParksAreEqual(expected2, actual2);
+	}
+	
+	@Test
+	public void return_park_by_id() {
+		
+		Park expected = getPark(
+				TEST_PARK_1_PARKCODE, TEST_PARK_1_PARKNAME, TEST_PARK_1_STATE, 
+				TEST_PARK_1_ACREAGE, TEST_PARK_1_ELEVATION, TEST_PARK_1_MILESOFTRAIL,
+				TEST_PARK_1_CAMPSITES, TEST_PARK_1_CLIMATE, TEST_PARK_1_YEARFOUNDED,
+				TEST_PARK_1_ANNUALVISITORS, TEST_PARK_1_QUOTE, TEST_PARK_1_QUOTESOURCE,
+				TEST_PARK_1_DESCRIPTION, TEST_PARK_1_FEE, TEST_PARK_1_ANIMALS
+				);
+		
+		Park actual = dao.getParkByCode(TEST_PARK_1_PARKCODE);
+
+		assertParksAreEqual(expected, actual);
 	}
 	
 	  
