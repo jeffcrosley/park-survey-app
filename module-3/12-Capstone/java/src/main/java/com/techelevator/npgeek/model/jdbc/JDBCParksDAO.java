@@ -9,11 +9,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.npgeek.dao.ParkDAO;
 import com.techelevator.npgeek.model.Park;
-import com.techelevator.npgeek.model.ParksDAO;
+
 
 @Component
-public class JDBCParksDAO implements ParksDAO {
+public class JDBCParksDAO implements ParkDAO {
 
 	private JdbcTemplate jdbcTemplate;
 
@@ -21,27 +22,21 @@ public class JDBCParksDAO implements ParksDAO {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	static final String queryAllParksAlphabetically = "SELECT * FROM park";
-	
+	static final String QUERY_ALL_PARKS = "SELECT * FROM park";
 	@Override
 	public List<Park> getAllParks() {
 		
 		List<Park> parks = new ArrayList<Park>();
-		
-		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(queryAllParksAlphabetically);
-		
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_ALL_PARKS);
 		while(rowSet.next()) {
 			//create new park instance and set the sql data to the park object as attributes
 			parks.add(mapRowToPark(rowSet));
-			
 		}		
-		
 		return parks;
 	}
 	
 	private Park mapRowToPark(SqlRowSet result) {
 		Park park = new Park();
-		
 		park.setParkCode(result.getString("parkcode"));
 		park.setParkName(result.getString("parkname"));
 		park.setState(result.getString("state"));
@@ -57,7 +52,6 @@ public class JDBCParksDAO implements ParksDAO {
 		park.setParkDescription(result.getString("parkdescription"));
 		park.setEntryFee(result.getLong("entryfee"));
 		park.setNumberOfAnimalSpecies(result.getLong("numberofanimalspecies"));
-		
 		return park;
 	}
 

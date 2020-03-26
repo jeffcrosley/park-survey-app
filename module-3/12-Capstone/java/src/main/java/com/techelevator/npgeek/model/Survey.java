@@ -3,10 +3,11 @@ package com.techelevator.npgeek.model;
 public class Survey {
 
 	private long surveyId;
-	private long parkId;
+	private String parkCode;
 	private String emailAddress;
 	private String state;
 	private String activityLevel;
+	
 	
 	public long getSurveyId() {
 		return surveyId;
@@ -14,11 +15,11 @@ public class Survey {
 	public void setSurveyId(long surveyId) {
 		this.surveyId = surveyId;
 	}
-	public long getParkId() {
-		return parkId;
+	public String getParkCode() {
+		return parkCode;
 	}
-	public void setParkId(long parkId) {
-		this.parkId = parkId;
+	public void setParkCode(String parkCode) {
+		this.parkCode = parkCode;
 	}
 	public String getEmailAddress() {
 		return emailAddress;
@@ -38,4 +39,5 @@ public class Survey {
 	public void setActivityLevel(String activityLevel) {
 		this.activityLevel = activityLevel;
 	}
+	
 }
