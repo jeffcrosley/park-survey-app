@@ -8,7 +8,8 @@ import com.techelevator.npgeek.model.Park;
 public interface ParkDAO{
 
 	public List<Park> getAllParks();
-	public Park getParkByCode(String parkCode); 
+	public List<Park> getParksBySurveys(); 
+	public Park getParkByCode(String parkCode);
 	
 	
 }

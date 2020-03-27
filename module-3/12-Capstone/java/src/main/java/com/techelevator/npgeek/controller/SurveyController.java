@@ -73,7 +73,9 @@ public class SurveyController {
 			ModelMap model
 			)
 	{
+		List<Park> parks = parkDAO.getParksBySurveys();
 		
+		model.put("parks", parks);
 		
 		return "favorites";
 	}

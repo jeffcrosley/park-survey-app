@@ -23,14 +23,35 @@ public class JDBCParksDAO implements ParkDAO {
 	}
 	
 	static final String QUERY_ALL_PARKS = "SELECT * FROM park";
+	static final String QUERY_PARKS_BY_SURVEYS = 
+			"SELECT park.*, COUNT(survey_result.parkcode) surveys " + 
+			"FROM park " + 
+			"INNER JOIN survey_result ON park.parkcode = survey_result.parkcode " + 
+			"GROUP BY park.parkcode " + 
+			"ORDER BY surveys DESC";
+	
 	@Override
 	public List<Park> getAllParks() {
 		
 		List<Park> parks = new ArrayList<Park>();
 		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_ALL_PARKS);
 		while(rowSet.next()) {
-			//create new park instance and set the sql data to the park object as attributes
 			parks.add(mapRowToPark(rowSet));
+		}		
+		return parks;
+	}
+	
+	@Override
+	public List<Park> getParksBySurveys() {
+		
+		List<Park> parks = new ArrayList<Park>();
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_PARKS_BY_SURVEYS);
+		while(rowSet.next()) {
+			
+			Park nextPark = mapRowToPark(rowSet);
+			nextPark.setNumberOfSurveys(rowSet.getLong("surveys"));
+			
+			parks.add(nextPark);
 		}		
 		return parks;
 	}

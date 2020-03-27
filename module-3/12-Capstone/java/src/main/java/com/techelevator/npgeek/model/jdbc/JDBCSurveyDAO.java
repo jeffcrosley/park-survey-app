@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.npgeek.model.Park;
 import com.techelevator.npgeek.model.ParkSurveys;
 import com.techelevator.npgeek.model.Survey;
 import com.techelevator.npgeek.model.dao.SurveyDAO;
@@ -34,21 +35,25 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	}
 
 	
-	static final String QUERY_GET_ALL_PARK_SURVEYS = "select park.parkcode, park.parkname, COUNT (survey_result.parkcode)\r\n" + 
-			"                  FROM survey_result \r\n" + 
-			"                  LEFT JOIN park ON park.parkcode = survey_result.parkcode\r\n" + 
-			"                  GROUP BY park.parkcode\r\n" + 
-			"                  ORDER BY COUNT DESC;";
+//	static final String QUERY_GET_ALL_PARKS =
+//			"SELECT *, COUNT (survey_result.parkcode) AS surveys " + 
+//			"FROM survey_result " + 
+//			"LEFT JOIN park ON park.parkcode = survey_result.parkcode " + 
+//			"GROUP BY park.parkcode " + 
+//			"ORDER BY surveys DESC;";
 	
-	@Override
-	public List<ParkSurveys> getAllSurveys() {
-		
-			SqlRowSet results = jdbcTemplate.queryForRowSet(QUERY_GET_ALL_PARK_SURVEYS);
-			while(results.next()) {
-				
-			}
-		return new ArrayList<ParkSurveys>();
-	}
+//	@Override
+//	public List<Park> getAllParks() {
+//		
+//		List<Park> parks = new ArrayList<Park>();
+//		
+//			SqlRowSet results = jdbcTemplate.queryForRowSet(QUERY_GET_ALL_PARKS);
+//			while(results.next()) {
+//				Park getPark = new Park();
+//			}
+//			
+//		return parks;
+//	}
 
 
 	private ParkSurveys mapRowToSurvey(SqlRowSet results) {

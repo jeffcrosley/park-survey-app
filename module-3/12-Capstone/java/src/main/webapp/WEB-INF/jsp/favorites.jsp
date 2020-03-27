@@ -9,15 +9,15 @@
 <h2>Favorite Parks</h2>
 
 <div>
+	<c:forEach var="park" items="${ parks }">
+		<c:url var="parkImg" value="/img/parks/${ fn:toLowerCase(park.parkCode) }.jpg"/>
+	    <img src="${ parkImg }" alt="park image">    
+ 
+   		<h3><c:out value="${ park.parkName }"/></h3>
+    	<p><c:out value="${ park.numberOfSurveys }"/></p>
+    </c:forEach>
+    
 
-<%-- 	<c:url var="parkDetailURL" value="/parkDetail?parkCode=${ park.parkCode }"/> --%>
-<%--     <c:url var="parkImg" value="/img/parks/${ fn:toLowerCase(park.parkCode) }.jpg"/> --%>
-    <c:url var="parkImg" value="/img/parks/ynp.jpg"/>
-
-    <img src="${ parkImg }" alt="park image">
-    <c:set var="parkCode" value="${park.parkCode}"/>
-    <h3>Yellowstone National Park</h3>
-    <p>5</p>
 
 </div>
 
