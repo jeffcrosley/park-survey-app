@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import com.techelevator.npgeek.model.ParkSurveys;
 import com.techelevator.npgeek.model.Survey;
 import com.techelevator.npgeek.model.dao.SurveyDAO;
 
@@ -18,14 +17,14 @@ import com.techelevator.npgeek.model.dao.SurveyDAO;
 public class JDBCSurveyDAO implements SurveyDAO {
 
 	private JdbcTemplate jdbcTemplate;
-	private List<ParkSurveys> parkSurveys = new ArrayList<ParkSurveys>();
+	private List<Survey> parkSurveys = new ArrayList<Survey>();
 
 	@Autowired
 	public JDBCSurveyDAO(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	static final String QUERY_ADD_SURVEY = "INSERT INTO survey (parkcode, emailaddress, state, activitylevel) VALUES (?,?,?,?)";
+	static final String QUERY_ADD_SURVEY = "INSERT INTO survey_result (parkcode, emailaddress, state, activitylevel) VALUES (?,?,?,?)";
 
 	@Override
 	public void addSurvey(Survey survey) {
@@ -41,7 +40,7 @@ public class JDBCSurveyDAO implements SurveyDAO {
 			"                  ORDER BY COUNT DESC;";
 	
 	@Override
-	public List<ParkSurveys> getAllParkSurveys() {
+	public List<Survey> getAllSurveys() {
 
 			SqlRowSet results = jdbcTemplate.queryForRowSet(QUERY_GET_ALL_PARK_SURVEYS);
 			while(results.next()) {
@@ -50,11 +49,16 @@ public class JDBCSurveyDAO implements SurveyDAO {
 		return parkSurveys;
 	}
 
+<<<<<<< HEAD
 	private ParkSurveys mapRowToSurvey(SqlRowSet results) {
 		ParkSurveys parkSurvey = new ParkSurveys();
 		parkSurvey.setParkCode(results.getString("parkcode"));
 		parkSurvey.setParkName(results.getString("parkname"));
 		parkSurvey.setSurveyCount(results.getInt("count"));
+=======
+	private Survey mapRowToSurvey(SqlRowSet results) {
+		Survey parkSurvey = new Survey();
+>>>>>>> 0910e7ae128bf1d34a581064cdbec9416b55be05
 		return parkSurvey;
 	}
 

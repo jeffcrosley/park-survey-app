@@ -14,7 +14,7 @@
 		<form:label path="parkCode">Favorite National Park</form:label>
 		<form:select path="parkCode">
 			<c:forEach var="park" items="${ parks }">
-				<form:option value="${ park.parkName }"><c:out value="${ park.parkName }"/></form:option>
+				<form:option value="${ park.parkCode }"><c:out value="${ park.parkName }"/></form:option>
 			</c:forEach>
 		</form:select>
 		<form:errors path="parkCode"/>

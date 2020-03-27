@@ -8,6 +8,8 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class Survey {
 
+	private String surveyId;
+
 	@NotBlank(message="Favorite Park is Required")
 	private String parkCode;
 	
@@ -21,6 +23,13 @@ public class Survey {
 	@NotBlank(message="Activity Level is Required")
 	private String activityLevel;
 	
+	public String getSurveyId() {
+		return surveyId;
+	}
+
+	public void setSurveyId(String surveyId) {
+		this.surveyId = surveyId;
+	}
 	
 	public String getParkCode() {
 		return parkCode;

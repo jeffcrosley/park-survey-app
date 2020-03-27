@@ -19,6 +19,7 @@ public class Park {
 	private String parkDescription;
 	private long entryFee;
 	private long numberOfAnimalSpecies;
+	private int numberOfSurveys;
 	
 	public String getParkCode() {
 		return parkCode;
@@ -109,6 +110,12 @@ public class Park {
 	}
 	public void setNumberOfAnimalSpecies(long numberOfAnimalSpecies) {
 		this.numberOfAnimalSpecies = numberOfAnimalSpecies;
+	}
+	public int getNumberOfSurveys() {
+		return numberOfSurveys;
+	}
+	public void setNumberOfSurveys(int numberOfSurveys) {
+		this.numberOfSurveys = numberOfSurveys;
 	}
 	
 	
