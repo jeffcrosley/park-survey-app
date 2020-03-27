@@ -1,12 +1,10 @@
 package com.techelevator.npgeek.model;
 
-import java.util.List;
-
 public class ParkSurveys {
 	
 	private String parkCode;
 	private String parkName;
-	private List<Survey> surveys;
+	private int surveyCount;
 	
 	public String getParkCode() {
 		return parkCode;
@@ -20,11 +18,11 @@ public class ParkSurveys {
 	public void setParkName(String parkName) {
 		this.parkName = parkName;
 	}
-	public List<Survey> getSurveys() {
-		return surveys;
+	public int getSurveyCount() {
+		return surveyCount;
 	}
-	public void setSurveys(List<Survey> surveys) {
-		this.surveys = surveys;
+	public void setSurveyCount(int surveyCount) {
+		this.surveyCount = surveyCount;
 	}
 	
 }

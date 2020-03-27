@@ -34,7 +34,12 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	}
 
 	
-	static final String QUERY_GET_ALL_PARK_SURVEYS = "SELECT * FROM survey_result";
+	static final String QUERY_GET_ALL_PARK_SURVEYS = "select park.parkcode, park.parkname, COUNT (survey_result.parkcode)\r\n" + 
+			"                  FROM survey_result \r\n" + 
+			"                  LEFT JOIN park ON park.parkcode = survey_result.parkcode\r\n" + 
+			"                  GROUP BY park.parkcode\r\n" + 
+			"                  ORDER BY COUNT DESC;";
+	
 	@Override
 	public List<ParkSurveys> getAllParkSurveys() {
 
@@ -47,6 +52,9 @@ public class JDBCSurveyDAO implements SurveyDAO {
 
 	private ParkSurveys mapRowToSurvey(SqlRowSet results) {
 		ParkSurveys parkSurvey = new ParkSurveys();
+		parkSurvey.setParkCode(results.getString("parkcode"));
+		parkSurvey.setParkName(results.getString("parkname"));
+		parkSurvey.setSurveyCount(results.getInt("count"));
 		return parkSurvey;
 	}
 
