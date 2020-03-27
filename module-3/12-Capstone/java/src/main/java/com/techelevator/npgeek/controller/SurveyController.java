@@ -16,12 +16,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.techelevator.npgeek.model.Park;
 import com.techelevator.npgeek.model.Survey;
 import com.techelevator.npgeek.model.dao.ParkDAO;
+import com.techelevator.npgeek.model.dao.SurveyDAO;
 
 @Controller
 public class SurveyController {
 
 	@Autowired
 	ParkDAO parkDAO;
+	
+	@Autowired
+	SurveyDAO surveyDAO;
 	
 	@RequestMapping(value="/survey", method=RequestMethod.GET)
 	public String displaySurveyPage(
@@ -48,8 +52,7 @@ public class SurveyController {
 	public String submitReviewToFavorites(
 			@Valid @ModelAttribute("survey") Survey surveyFormValues,
 			BindingResult result,
-			RedirectAttributes flash,
-			ModelMap model
+			RedirectAttributes flash
 			)
 	{
 		if (result.hasErrors()) {
@@ -60,6 +63,8 @@ public class SurveyController {
 		
 		flash.addFlashAttribute("message", "You have successfully posted your survey.");
 		
+		surveyDAO.addSurvey(surveyFormValues);
+		
 		return "redirect:/favorites";
 	}
 	
@@ -68,6 +73,8 @@ public class SurveyController {
 			ModelMap model
 			)
 	{
+		
+		
 		return "favorites";
 	}
 }

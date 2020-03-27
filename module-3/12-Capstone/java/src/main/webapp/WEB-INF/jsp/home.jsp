@@ -14,7 +14,7 @@
 	    <c:url var="parkImg" value="/img/parks/${ fn:toLowerCase(park.parkCode) }.jpg"/>
 	
 	    <a href="${ parkDetailURL }"><img src="${ parkImg }" alt="park image"></a>
-	    <c:set var = "parkCode" scope = "session" value = "${park.parkCode}"/>
+	    <c:set var = "parkCode" value = "${park.parkCode}"/>
 	    <div class="park-info">
 	        <h3><c:out value="${ park.parkName }"/></h3>
 	        <p><c:out value="${ park.parkDescription }"/></p>
