@@ -20,6 +20,11 @@
 		<form:errors path="parkCode"/>
 	</div>
 	
+	<div class="form-group">
+		<form:label path="emailAddress">Email</form:label>
+		<form:input path="emailAddress"/>
+		<form:errors path="emailAddress"/>
+	</div>
 <!-- 	<div class="form-group"> -->
 <%-- 		<form:label path="lastName">Last Name</form:label> --%>
 <%-- 		<form:input path="lastName"/> --%>

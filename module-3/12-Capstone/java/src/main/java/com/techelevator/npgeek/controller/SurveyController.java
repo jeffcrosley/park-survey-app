@@ -48,6 +48,14 @@ public class SurveyController {
 			ModelMap model
 			)
 	{
+		if (result.hasErrors()) {
+			flash.addFlashAttribute("survey", surveyFormValues);
+			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey", result);
+			return "redirect:/survey";
+		}
+		
+		flash.addFlashAttribute("message", "You have successfully posted your survey.");
+		
 		return "redirect:/favorites";
 	}
 	
