@@ -6,10 +6,9 @@
 	<c:param name="pageTitle" value="Park Details" />
 </c:import>
 
-
 <c:url var="parkImg"
 	value="/img/parks/${ fn:toLowerCase(park.parkCode) }.jpg" />
-<img src="${ parkImg }" alt="park image">
+<img class="parkDetailImg" src="${ parkImg }" alt="park image">
 
 <div class="park-info">
 	<h3><c:out value="${ park.parkName }" /></h3>
@@ -33,19 +32,32 @@
 
 <c:forEach var="weather" items="${ fiveDayForecast }">
 
-	<section class="section">
-		<div>
-			<b>${weather.forecast}</b>
-			<span class="weather-detail-img">
-				<c:set value="${weather.forecast}" var="forecastPngString" />
-				<c:if test="${weather.forecast == 'partly cloudy'}">
-					<c:set value="partlyCloudy" var="forecastPngString" />
-				</c:if>
-				<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" /> 
+	<c:choose>
+		<c:when test="${ weather.fiveDayForecastValue == 1 }">
+			Day 1
+		</c:when>
+		<c:otherwise>
+			<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />
+			<div class="future-weather-box">
 				<img src="${weatherImgSrc}" alt="${forecastPngString}" />
-			</span>
-		</div>
-	</section>
+				<p>High: <c:out value="${ weather.fahrenheitHigh }"/></p>
+				<p>Low: <c:out value="${ weather.fahrenheitLow }"/></p>
+			</div>
+		</c:otherwise>
+	</c:choose>
+<!-- 	<section class="section"> -->
+<!-- 		<div> -->
+<%-- 			<b>${weather.forecast}</b> --%>
+<!-- 			<span class="weather-detail-img"> -->
+<%-- 				<c:set value="${weather.forecast}" var="forecastPngString" /> --%>
+<%-- 				<c:if test="${weather.forecast == 'partly cloudy'}"> --%>
+<%-- 					<c:set value="partlyCloudy" var="forecastPngString" /> --%>
+<%-- 				</c:if> --%>
+<%-- 				<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />  --%>
+<%-- 				<img src="${weatherImgSrc}" alt="${forecastPngString}" /> --%>
+<!-- 			</span> -->
+<!-- 		</div> -->
+<!-- 	</section> -->
 </c:forEach>
 
 </div>

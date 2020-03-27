@@ -5,13 +5,11 @@ public class Weather {
 	
 	private String parkCode;
 	private int fiveDayForecastValue;
-	private double farenheitLow;
+	private double fahrenheitLow;
 	private double fahrenheitHigh;
 	private double celsiusLow;
 	private double celsiusHigh;
 	private String forecast;
-	
-	
 	public String getParkCode() {
 		return parkCode;
 	}
@@ -24,11 +22,11 @@ public class Weather {
 	public void setFiveDayForecastValue(int fiveDayForecastValue) {
 		this.fiveDayForecastValue = fiveDayForecastValue;
 	}
-	public double getFarenheitLow() {
-		return farenheitLow;
+	public double getFahrenheitLow() {
+		return fahrenheitLow;
 	}
-	public void setFarenheitLow(double farenheitLow) {
-		this.farenheitLow = farenheitLow;
+	public void setFahrenheitLow(double fahrenheitLow) {
+		this.fahrenheitLow = fahrenheitLow;
 	}
 	public double getFahrenheitHigh() {
 		return fahrenheitHigh;
@@ -54,5 +52,9 @@ public class Weather {
 	public void setForecast(String forecast) {
 		this.forecast = forecast;
 	}
+
+	
+	
+
 	
 }
