@@ -35,12 +35,6 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	}
 
 	
-//	static final String QUERY_GET_ALL_PARKS =
-//			"SELECT *, COUNT (survey_result.parkcode) AS surveys " + 
-//			"FROM survey_result " + 
-//			"LEFT JOIN park ON park.parkcode = survey_result.parkcode " + 
-//			"GROUP BY park.parkcode " + 
-//			"ORDER BY surveys DESC;";
 	
 //	@Override
 //	public List<Park> getAllParks() {
@@ -55,7 +49,23 @@ public class JDBCSurveyDAO implements SurveyDAO {
 //		return parks;
 //	}
 
+	static final String QUERY_GET_ALL_PARK_SURVEYS =
+			"SELECT *, COUNT (survey_result.parkcode) AS surveys " + 
+			"FROM survey_result " + 
+			"LEFT JOIN park ON park.parkcode = survey_result.parkcode " + 
+			"GROUP BY park.parkcode " + 
+			"ORDER BY surveys DESC";
+	@Override
+	public List<ParkSurveys> getAllParkSurveys() {
 
+		List<ParkSurveys> parkSurveys = new ArrayList<ParkSurveys>();
+		SqlRowSet results = jdbcTemplate.queryForRowSet(QUERY_GET_ALL_PARK_SURVEYS);
+		while(results.next()) {
+			parkSurveys.add(mapRowToSurvey(results));
+		}
+		return parkSurveys;
+	}
+	
 	private ParkSurveys mapRowToSurvey(SqlRowSet results) {
 		ParkSurveys parkSurvey = new ParkSurveys();
 		parkSurvey.setParkCode(results.getString("parkcode"));
@@ -63,5 +73,7 @@ public class JDBCSurveyDAO implements SurveyDAO {
 		parkSurvey.setSurveyCount(results.getInt("count"));
 		return parkSurvey;
 	}
+
+
 
 }

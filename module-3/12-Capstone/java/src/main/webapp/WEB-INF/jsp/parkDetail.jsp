@@ -30,36 +30,67 @@
 
 <div class="weather-info">
 
-<c:forEach var="weather" items="${ fiveDayForecast }">
+<%-- 		<c:forEach var="weather" items="${ fiveDayForecast }">
+		
+			<c:choose>
+				<c:when test="${ weather.fiveDayForecastValue == 1 }">
+					Day 1
+				</c:when>
+				<c:otherwise>
+					<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />
+					<div class="future-weather-box">
+						<img src="${weatherImgSrc}" alt="${forecastPngString}" />
+						<p>High: <c:out value="${ weather.fahrenheitHigh }"/></p>
+						<p>Low: <c:out value="${ weather.fahrenheitLow }"/></p>
+					</div>
+				</c:otherwise>
+			</c:choose> --%>
+			
 
-	<c:choose>
-		<c:when test="${ weather.fiveDayForecastValue == 1 }">
-			Day 1
-		</c:when>
-		<c:otherwise>
-			<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />
-			<div class="future-weather-box">
-				<img src="${weatherImgSrc}" alt="${forecastPngString}" />
+			
+		<!-- 	<section class="section"> -->
+		<!-- 		<div> -->
+		<%-- 			<b>${weather.forecast}</b> --%>
+		<!-- 			<span class="weather-detail-img"> -->
+		<%-- 				<c:set value="${weather.forecast}" var="forecastPngString" /> --%>
+		<%-- 				<c:if test="${weather.forecast == 'partly cloudy'}"> --%>
+		<%-- 					<c:set value="partlyCloudy" var="forecastPngString" /> --%>
+		<%-- 				</c:if> --%>
+		<%-- 				<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />  --%>
+		<%-- 				<img src="${weatherImgSrc}" alt="${forecastPngString}" /> --%>
+		<!-- 			</span> -->
+		<!-- 		</div> -->
+		<!-- 	</section> -->
+<%-- 		</c:forEach> --%>
+<!-- 	</div> -->
+
+
+	<h2>5-day forecast</h2>
+	<p>Check the weather for the next 5 days.</p>
+	
+	<div class="row">
+		<c:forEach var="weather" items="${ fiveDayForecast }">
+	
+			<div class="column">
+			  <div class="card">
+			    <h3><b>${weather.forecast}</b></h3>
+			    <span class="weather-detail-img">
+			    	<c:set value="${weather.forecast}" var="forecastPngString" />
+			    	<c:if test="${weather.forecast == 'partly cloudy'}">
+			    		<c:set value="partlyCloudy" var="forecastPngString" />
+			    	</c:if>
+			    	<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />
+			    	<img class="weather-detail-img" src="${weatherImgSrc}" alt="${forecastPngString}" />
+			    </span>
 				<p>High: <c:out value="${ weather.fahrenheitHigh }"/></p>
 				<p>Low: <c:out value="${ weather.fahrenheitLow }"/></p>
+			  </div>
 			</div>
-		</c:otherwise>
-	</c:choose>
-<!-- 	<section class="section"> -->
-<!-- 		<div> -->
-<%-- 			<b>${weather.forecast}</b> --%>
-<!-- 			<span class="weather-detail-img"> -->
-<%-- 				<c:set value="${weather.forecast}" var="forecastPngString" /> --%>
-<%-- 				<c:if test="${weather.forecast == 'partly cloudy'}"> --%>
-<%-- 					<c:set value="partlyCloudy" var="forecastPngString" /> --%>
-<%-- 				</c:if> --%>
-<%-- 				<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />  --%>
-<%-- 				<img src="${weatherImgSrc}" alt="${forecastPngString}" /> --%>
-<!-- 			</span> -->
-<!-- 		</div> -->
-<!-- 	</section> -->
-</c:forEach>
+			
+		</c:forEach>
+	</div>
 
-</div>
+
+
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
