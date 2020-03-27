@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.npgeek.model.ParkSurveys;
 import com.techelevator.npgeek.model.Survey;
 import com.techelevator.npgeek.model.dao.SurveyDAO;
 
@@ -40,25 +41,21 @@ public class JDBCSurveyDAO implements SurveyDAO {
 			"                  ORDER BY COUNT DESC;";
 	
 	@Override
-	public List<Survey> getAllSurveys() {
-
+	public List<ParkSurveys> getAllSurveys() {
+		
 			SqlRowSet results = jdbcTemplate.queryForRowSet(QUERY_GET_ALL_PARK_SURVEYS);
 			while(results.next()) {
-				parkSurveys.add(mapRowToSurvey(results));
+				
 			}
-		return parkSurveys;
+		return new ArrayList<ParkSurveys>();
 	}
 
-<<<<<<< HEAD
+
 	private ParkSurveys mapRowToSurvey(SqlRowSet results) {
 		ParkSurveys parkSurvey = new ParkSurveys();
 		parkSurvey.setParkCode(results.getString("parkcode"));
 		parkSurvey.setParkName(results.getString("parkname"));
 		parkSurvey.setSurveyCount(results.getInt("count"));
-=======
-	private Survey mapRowToSurvey(SqlRowSet results) {
-		Survey parkSurvey = new Survey();
->>>>>>> 0910e7ae128bf1d34a581064cdbec9416b55be05
 		return parkSurvey;
 	}
 
