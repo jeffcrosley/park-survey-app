@@ -9,13 +9,10 @@
 <c:forEach var="park" items="${ parks }">
 
 	<div class="park-tile">
-<<<<<<< HEAD
-		<c:url var="parkDetailURL" value="/parkDetail?${ park.parkCode }"/>
-=======
 	
 		<c:url var="parkDetailURL" value="/parkDetail?parkCode=${ park.parkCode }"/>
->>>>>>> 62d7515fac7f74cb82eb04e5b2efa44480d30028
 	    <c:url var="parkImg" value="/img/parks/${ fn:toLowerCase(park.parkCode) }.jpg"/>
+	
 	    <a href="${ parkDetailURL }"><img src="${ parkImg }" alt="park image"></a>
 	    <c:set var = "parkCode" scope = "session" value = "${park.parkCode}"/>
 	    <div class="park-info">

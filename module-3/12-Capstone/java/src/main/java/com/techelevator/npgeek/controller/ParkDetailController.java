@@ -28,14 +28,15 @@ public class ParkDetailController {
 	
 	@RequestMapping(value="/parkDetail", method=RequestMethod.GET)
 	public String displayParkDetail(
+				HttpServletRequest request,
 				HttpSession session,
 				ModelMap model
 			) 
 	{
-		String currentParkCode = (String) session.getAttribute("parkCode");
-		System.out.println("currentParkCode: " + currentParkCode);
+		String currentParkCode = request.getParameter("parkCode");
 		Park park = parkDAO.getParkByCode(currentParkCode);
 		model.put("park", park);
+		
 		List<Weather> fiveDayForecast =  weatherDAO.getFiveDayForecastByParkCode(currentParkCode);
 		model.put("fiveDayForecast", fiveDayForecast);
 		

@@ -60,9 +60,7 @@
 </div>
 
 <div class="weather-info">
-	src/main/webapp/WEB-INF/jsp/weatherDetail.jsp @@ -3,22 +3,40 @@
 
-	<c:import url="/WEB-INF/jsp/common/header.jsp" />
 <c:forEach var="weather" items="${ fiveDayForecast }">
 
 	<section class="section">
