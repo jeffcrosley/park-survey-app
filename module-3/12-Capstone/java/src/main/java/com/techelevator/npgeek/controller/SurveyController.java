@@ -33,8 +33,12 @@ public class SurveyController {
 		}
 		
 		List<Park> parks = parkDAO.getAllParks();
+		List<String> states = Survey.getStates();
+		List<String> buttons = Survey.getButtons();
 		
 		model.put("parks", parks);
+		model.put("states", states);
+		model.put("buttons", buttons);
 		
 		return "survey";
 	}

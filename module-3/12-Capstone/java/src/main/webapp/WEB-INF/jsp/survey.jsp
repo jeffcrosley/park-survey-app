@@ -25,6 +25,42 @@
 		<form:input path="emailAddress"/>
 		<form:errors path="emailAddress"/>
 	</div>
+	
+	<div class="form-group">
+		<form:label path="state">State</form:label>
+		<form:select path="state">
+			<c:forEach var="state" items="${ states }">
+				<form:option value="${ state }"><c:out value="${ state }"/></form:option>
+			</c:forEach>
+		</form:select>
+		<form:errors path="state"/>
+	</div>
+	
+	<div class="form-group">
+		<form:label path="activityLevel">Activity Level</form:label>
+		<c:forEach var="button" items="${ buttons }">
+			<form:radiobutton path="activityLevel" value="${ button }" label="${ button }"/>
+		</c:forEach>
+		<form:errors path="activityLevel"/>
+	</div>
+	
+	
+	
+<%--    <td><form:label path = "gender">Gender</form:label></td> --%>
+<!--     <td> -->
+<%--    <form:radiobutton path = "gender" value = "M" label = "Male" /> --%>
+<%--    <form:radiobutton path = "gender" value = "F" label = "Female" /> --%>
+
+<%-- 		<form:label for="1" path="activityLevel">1</form:label> --%>
+<%-- 		<form:input type="radio" id="1" value="1" path="activityLevel"/> --%>
+<%-- 		<form:label for="1" path="activityLevel">2</form:label> --%>
+<%-- 		<form:input type="radio" id="1" value="1" path="activityLevel"/> --%>
+<%-- 		<form:label for="1" path="activityLevel">3</form:label> --%>
+<%-- 		<form:input type="radio" id="1" value="1" path="activityLevel"/> --%>
+<%-- 		<form:errors path="activityLevel"/> --%>
+<!-- 	</div> -->
+	
+	
 <!-- 	<div class="form-group"> -->
 <%-- 		<form:label path="lastName">Last Name</form:label> --%>
 <%-- 		<form:input path="lastName"/> --%>
