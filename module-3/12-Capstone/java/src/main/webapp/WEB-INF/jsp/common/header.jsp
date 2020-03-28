@@ -23,7 +23,7 @@
 					<c:url var="favoritesURL" value="/favorites"/>
 					<li><a href="${ homeURL }">Home</a></li>
 					<li><a href="${ surveyURL }">Survey</a></li>
-					<li><a href="${ favoritesURL }">Favorites</a></li>
+<%-- 					<li><a href="${ favoritesURL }">Favorites</a></li> --%>
 				</ul>
 			</nav>
 		</header>
