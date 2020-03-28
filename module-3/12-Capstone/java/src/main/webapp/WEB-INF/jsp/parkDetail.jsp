@@ -84,9 +84,29 @@
 			    </span>
 				<p>High: <c:out value="${ weather.fahrenheitHigh }"/></p>
 				<p>Low: <c:out value="${ weather.fahrenheitLow }"/></p>
+ 				<c:if test="${(weather.fahrenheitHigh - weather.fahrenheitLow) > 20}">
+	    			<p>Please wear breathable layers!</p>
+    			</c:if>
+				
+				<c:choose>
+					<c:when test="${ weather.forecast == 'snow' }">
+						<p>Please pack snowshoes!</p>
+					</c:when>
+					<c:when test="${ weather.forecast == 'rain' }">
+						<p>Please pack rain gear and wear waterproof shoes!</p>
+					</c:when>
+					<c:when test="${ weather.forecast == 'thunderstorms' }">
+						<p>Please seek shelter and avoid hiking on exposed ridges!</p>
+					</c:when>
+					<c:when test="${ weather.forecast == 'sun' }">
+						<p>Please pack sunblock!</p>
+						<c:if test="${weather.fahrenheitHigh >= 75}">
+			    			<p>Please bring an extra gallon of water!</p>
+		    			</c:if>
+					</c:when>
+				</c:choose>				
 			  </div>
 			</div>
-			
 		</c:forEach>
 	</div>
 
