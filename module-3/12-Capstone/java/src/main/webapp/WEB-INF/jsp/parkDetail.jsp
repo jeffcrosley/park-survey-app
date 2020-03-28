@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 
 
 <c:import url="/WEB-INF/jsp/common/header.jsp">
@@ -28,18 +30,15 @@
 	<p><c:out value="${ park.entryFee }" /></p>
 	<p><c:out value="${ park.numberOfAnimalSpecies }" /></p>
 </div>
-
 <div class="weather-info">
 
 	<c:url var="parkDetailURL" value="/parkDetail?parkCode=${ park.parkCode }"/>
 
 	<form:form action="${ parkDetailURL }" method="POST" >
-				
 		<input type="submit" value="F/C"/>
-	
 	</form:form>
 	
-	<c:out value="${ degrees }"/>
+	
 
 <%-- 		<c:forEach var="weather" items="${ fiveDayForecast }">
 		
@@ -93,8 +92,16 @@
 			    	<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />
 			    	<img class="weather-detail-img" src="${weatherImgSrc}" alt="${forecastPngString}" />
 			    </span>
-				<p>High: <c:out value="${ weather.fahrenheitHigh }"/></p>
-				<p>Low: <c:out value="${ weather.fahrenheitLow }"/></p>
+			    <p>Temp in : ${degrees}</p>
+		    	<c:if test="${degrees == 'F'}">
+		    	
+					<p>High: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.fahrenheitHigh}" /></p>
+					<p>Low: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.fahrenheitLow}" /></p>
+		    	</c:if>
+		    	<c:if test="${degrees == 'C'}">
+					<p>High: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.celsiusHigh}" /></p>
+					<p>Low: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.celsiusLow}"/></p>
+		    	</c:if>
  				<c:if test="${(weather.fahrenheitHigh - weather.fahrenheitLow) > 20}">
 	    			<p>Please wear breathable layers!</p>
     			</c:if>
