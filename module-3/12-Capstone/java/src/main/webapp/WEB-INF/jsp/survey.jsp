@@ -6,9 +6,11 @@
 	<c:param name="pageTitle" value="Survey" />
 </c:import>
 
-<c:url value="/survey" var="surveyURL"/>
+<h2>We'd Love to Hear From You!</h2>
+<h3>Please fill out the survey below to tell us more about you and your favorite park.</h3>
 
-<form:form modelAttribute="survey" action="${ surveyURL }" method="POST" >
+<c:url value="/survey" var="surveyURL"/>
+<form:form class="form" modelAttribute="survey" action="${ surveyURL }" method="POST" >
 
 	<div class="form-group">
 		<form:label path="parkCode">Favorite National Park</form:label>
@@ -38,13 +40,15 @@
 	
 	<div class="form-group">
 		<form:label path="activityLevel">Activity Level</form:label>
-		<c:forEach var="button" items="${ buttons }">
-			<form:radiobutton path="activityLevel" value="${ button }" label="${ button }"/>
-		</c:forEach>
+		<div class="buttons">
+			<c:forEach var="button" items="${ buttons }">
+				<form:radiobutton path="activityLevel" value="${ button }" label="${ button }"/>
+			</c:forEach>
+		</div>
 		<form:errors path="activityLevel"/>
 	</div>
 		
-	<input type="submit" value="submit"/>
+	<input class="submit" type="submit" value="Submit"/>
 
 </form:form>
 
