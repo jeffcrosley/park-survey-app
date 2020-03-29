@@ -3,6 +3,8 @@
 /*------------------------------------------*/
 :root {
 	/* COLORS */
+	--color-black: #000000;
+	--color-white: #ffffff;
 	--color-grey-1: #dfe6e9;
     --color-grey-2: #b2bec3;
     --color-grey-3: #636e72;
@@ -128,54 +130,67 @@ main {
 /*----------PARK DETAIL PAGE----------
 /*------------------------------------------*/
 
-.parkDetailImg {
+.park-detail {
+	margin-bottom: 30px;
+	
+	display: flex;
+}
+
+.park-detail-img {
+	width: 35%;
+	margin-right: 20px;
+	object-fit: cover;
+}
+
+.park-detail-info * {
+	margin-bottom: 10px;
+}
+
+.temp-switch {
+	padding: 10px 20px;
+	background-color: var(--color-orange);
+	color: var(--color-grey-1);
+	border: none;
+	border-radius: 100px;
+	font-size: 20px;
+	font-weight: 900;	
+	margin: 10px 0;
+	cursor: pointer;
+	
+	transition: all .2s;
+}
+
+.temp-switch:hover {
+	background-color: var(--color-yellow);
+	color: var(--color-grey-4);
+}
+
+.weather {
+	color: var(--color-grey-4);
+	background-color: var(--color-white);
+	margin: 10px 20px;
+	padding: 20px 30px;
+	border-radius: 10px;
+	
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.weather-tile {
+	width: 15%;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+.tomorrow {
+	background-color: var(--color-grey-3);
+	color: var(--color-grey-1);
+}
+
+.weather-img {
 	width: 100%;
 }
 
-/****CARD***/
-/* Float four columns side by side */
-.column {
-  float: left;
-  width: 20%;
-  padding: 0 10px;
-}
-
-/* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-}
-
-.weather-detail-img{
-	max-width: 150px;
-}
-/****CARD***/
-
-
-<<<<<<< HEAD
-=======
 /*------------------------------------------*/
 /*----------SURVEY PAGE----------
 /*------------------------------------------*/
@@ -276,8 +291,7 @@ label {
 	align-items: center;
 	justify-content: center;
 }
-
->>>>>>> b068e7187789eae6f209d3789ae67ddccc00da94
+	
 /*------------------------------------------*/
 /*----------FOOTER----------
 /*------------------------------------------*/

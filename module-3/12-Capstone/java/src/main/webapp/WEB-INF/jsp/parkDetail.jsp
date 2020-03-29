@@ -9,100 +9,72 @@
 	<c:param name="pageTitle" value="Park Details" />
 </c:import>
 
-<c:url var="parkImg"
-	value="/img/parks/${ fn:toLowerCase(park.parkCode) }.jpg" />
-<img class="parkDetailImg" src="${ parkImg }" alt="park image">
-
-<div class="park-info">
-	<h3><c:out value="${ park.parkName }" /></h3>
-	<p><c:out value="${ park.parkDescription }" /></p>
-	<p><c:out value="${ park.state }" /></p>
-	<p><c:out value="${ park.acreage }" /></p>
-	<p><c:out value="${ park.elevationInFeet }" /></p>
-	<p><c:out value="${ park.milesOfTrail }" /></p>
-	<p><c:out value="${ park.numberOfCampsites }" /></p>
-	<p><c:out value="${ park.climate }" /></p>
-	<p><c:out value="${ park.yearFounded }" /></p>
-	<p><c:out value="${ park.annualVisitorCount }" /></p>
-	<p><c:out value="${ park.inspirationalQuote }" /></p>
-	<p><c:out value="${ park.inspirationalQuoteSource }" /></p>
-	<p><c:out value="${ park.parkDescription }" /></p>
-	<p><c:out value="${ park.entryFee }" /></p>
-	<p><c:out value="${ park.numberOfAnimalSpecies }" /></p>
+<div class="park-detail">
+	<c:url var="parkImg"
+		value="/img/parks/${ fn:toLowerCase(park.parkCode) }.jpg" />
+	<img class="park-detail-img" src="${ parkImg }" alt="park image">
+	
+	<div class="park-detail-info">
+		<h2><c:out value="${ park.parkName }" /></h2>
+		<p><c:out value="${ park.parkDescription }" /></p>
+		<p><c:out value="State: ${ park.state }" /></p>
+		<p><c:out value="Acres: ${ park.acreage }" /></p>
+		<p><c:out value="Elevation: ${ park.elevationInFeet }ft" /></p>
+		<p><c:out value="Miles of Trail: ${ park.milesOfTrail }" /></p>
+		<p><c:out value="Campsites: ${ park.numberOfCampsites }" /></p>
+		<p><c:out value="Climate: ${ park.climate }" /></p>
+		<p><c:out value="Year Founded: ${ park.yearFounded }" /></p>
+		<p><c:out value="Annual Visitors: ${ park.annualVisitorCount }" /></p>
+		<p><c:out value="${ park.inspirationalQuote }" /></p>
+		<p><c:out value="- ${ park.inspirationalQuoteSource }" /></p>
+		<p><c:out value="Known Species of Animals: ${ park.numberOfAnimalSpecies }" /></p>
+		<p><c:out value="Entry fee: $ ${ park.entryFee }" /></p>
+	</div>
 </div>
+
 <div class="weather-info">
 
-	<c:url var="parkDetailURL" value="/parkDetail?parkCode=${ park.parkCode }"/>
+	<h3>5-day forecast</h3>
 
-	<form:form action="${ parkDetailURL }" method="POST" >
-		<input type="submit" value="F/C"/>
-	</form:form>
-	
-	
-
-<%-- 		<c:forEach var="weather" items="${ fiveDayForecast }">
-		
-			<c:choose>
-				<c:when test="${ weather.fiveDayForecastValue == 1 }">
-					Day 1
-				</c:when>
-				<c:otherwise>
-					<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />
-					<div class="future-weather-box">
-						<img src="${weatherImgSrc}" alt="${forecastPngString}" />
-						<p>High: <c:out value="${ weather.fahrenheitHigh }"/></p>
-						<p>Low: <c:out value="${ weather.fahrenheitLow }"/></p>
-					</div>
-				</c:otherwise>
-			</c:choose> --%>
-			
-
-			
-		<!-- 	<section class="section"> -->
-		<!-- 		<div> -->
-		<%-- 			<b>${weather.forecast}</b> --%>
-		<!-- 			<span class="weather-detail-img"> -->
-		<%-- 				<c:set value="${weather.forecast}" var="forecastPngString" /> --%>
-		<%-- 				<c:if test="${weather.forecast == 'partly cloudy'}"> --%>
-		<%-- 					<c:set value="partlyCloudy" var="forecastPngString" /> --%>
-		<%-- 				</c:if> --%>
-		<%-- 				<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />  --%>
-		<%-- 				<img src="${weatherImgSrc}" alt="${forecastPngString}" /> --%>
-		<!-- 			</span> -->
-		<!-- 		</div> -->
-		<!-- 	</section> -->
-<%-- 		</c:forEach> --%>
-<!-- 	</div> -->
-
-
-	<h2>5-day forecast</h2>
 	<p>Check the weather for the next 5 days.</p>
 	
-	<div class="row">
+	<c:url var="parkDetailURL" value="/parkDetail?parkCode=${ park.parkCode }"/>
+	<form:form action="${ parkDetailURL }" method="POST" >
+		<input class="temp-switch" type="submit" value="Change Degrees F/C"/>
+	</form:form>
+		
+	<div class="weather">
+		
 		<c:forEach var="weather" items="${ fiveDayForecast }">
-	
-			<div class="column">
-			  <div class="card">
-			    <h3><b>${weather.forecast}</b></h3>
-			    <span class="weather-detail-img">
-			    	<c:set value="${weather.forecast}" var="forecastPngString" />
-			    	<c:if test="${weather.forecast == 'partly cloudy'}">
-			    		<c:set value="partlyCloudy" var="forecastPngString" />
-			    	</c:if>
-			    	<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />
-			    	<img class="weather-detail-img" src="${weatherImgSrc}" alt="${forecastPngString}" />
-			    </span>
-			    <p>Temp in : ${degrees}</p>
-		    	<c:if test="${degrees == 'F'}">
+		
+			<c:set var="tomorrow" value=""/>
+			<c:if test="${ weather.fiveDayForecastValue == 1 }">
+				<c:set var="tomorrow" value="tomorrow"/>
+			</c:if>
+			
+			<div class="weather-tile ${ tomorrow }">
+		    	<c:set value="${weather.forecast}" var="forecastPngString" />
+		    	<c:if test="${weather.forecast == 'partly cloudy'}">
+		    		<c:set value="partlyCloudy" var="forecastPngString" />
+		    	</c:if>
+		    	<c:url value="/img/weather/${forecastPngString}.png" var="weatherImgSrc" />
+		    	<img class="weather-img" src="${weatherImgSrc}" alt="${forecastPngString}" />
+		    	<h3><b>${weather.forecast}</b></h3>
 		    	
-					<p>High: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.fahrenheitHigh}" /></p>
-					<p>Low: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.fahrenheitLow}" /></p>
-		    	</c:if>
-		    	<c:if test="${degrees == 'C'}">
-					<p>High: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.celsiusHigh}" /></p>
-					<p>Low: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.celsiusLow}"/></p>
-		    	</c:if>
- 				<c:if test="${(weather.fahrenheitHigh - weather.fahrenheitLow) > 20}">
+				
+				<p>Temp in : ${degrees}</p>
+				<c:choose>
+					<c:when test="${ degrees == 'F' }">
+						<p>High: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.fahrenheitHigh}" /></p>
+						<p>Low: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.fahrenheitLow}" /></p>
+					</c:when>
+					<c:otherwise>
+						<p>High: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.celsiusHigh}" /></p>
+						<p>Low: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.celsiusLow}"/></p>
+					</c:otherwise>
+				</c:choose>
+				
+				 <c:if test="${(weather.fahrenheitHigh - weather.fahrenheitLow) > 20}">
 	    			<p>Please wear breathable layers!</p>
     			</c:if>
 				
@@ -122,10 +94,11 @@
 			    			<p>Please bring an extra gallon of water!</p>
 		    			</c:if>
 					</c:when>
-				</c:choose>				
-			  </div>
-			</div>
+				</c:choose>	
+				
+			</div>		
 		</c:forEach>
+		
 	</div>
 
 </div>
