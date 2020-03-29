@@ -65,37 +65,85 @@
 				<p>Temp in : ${degrees}</p>
 				<c:choose>
 					<c:when test="${ degrees == 'F' }">
-						<p>High: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.fahrenheitHigh}" /></p>
-						<p>Low: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.fahrenheitLow}" /></p>
+						<p>
+							High:
+							<fmt:formatNumber type="number" maxFractionDigits="2"
+								value="${weather.fahrenheitHigh}" />
+						</p>
+						<p>
+							Low:
+							<fmt:formatNumber type="number" maxFractionDigits="2"
+								value="${weather.fahrenheitLow}" />
+						</p>
+
+						<c:if
+							test="${(weather.fahrenheitHigh - weather.fahrenheitLow) > 20}">
+							<p>Please wear breathable layers!</p>
+						</c:if>
+
+						<c:choose>
+							<c:when test="${ weather.forecast == 'snow' }">
+								<p>Please pack snowshoes!</p>
+							</c:when>
+							<c:when test="${ weather.forecast == 'rain' }">
+								<p>Please pack rain gear and wear waterproof shoes!</p>
+							</c:when>
+							<c:when test="${ weather.forecast == 'thunderstorms' }">
+								<p>Please seek shelter and avoid hiking on exposed ridges!</p>
+							</c:when>
+							<c:when test="${ weather.fahrenheitLow <= 20 }">
+								<p>Danger!Frigid temperature!</p>
+							</c:when>
+							<c:when test="${ weather.forecast == 'sunny' }">
+								<p>Please pack sunblock!</p>
+								<c:if test="${weather.fahrenheitHigh >= 75}">
+									<p>Please bring an extra gallon of water!</p>
+								</c:if>
+							</c:when>
+						</c:choose>
+
 					</c:when>
 					<c:otherwise>
-						<p>High: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.celsiusHigh}" /></p>
-						<p>Low: <fmt:formatNumber type = "number" maxFractionDigits  = "2" value = "${weather.celsiusLow}"/></p>
+						<p>
+							High:
+							<fmt:formatNumber type="number" maxFractionDigits="2"
+								value="${weather.celsiusHigh}" />
+						</p>
+						<p>
+							Low:
+							<fmt:formatNumber type="number" maxFractionDigits="2"
+								value="${weather.celsiusLow}" />
+						</p>
+
+						<c:if test="${(weather.celsiusHigh - weather.celsiusLow) > 20}">
+							<p>Please wear breathable layers!</p>
+						</c:if>
+
+						<c:choose>
+							<c:when test="${ weather.forecast == 'snow' }">
+								<p>Please pack snowshoes!</p>
+							</c:when>
+							<c:when test="${ weather.forecast == 'rain' }">
+								<p>Please pack rain gear and wear waterproof shoes!</p>
+							</c:when>
+							<c:when test="${ weather.forecast == 'thunderstorms' }">
+								<p>Please seek shelter and avoid hiking on exposed ridges!</p>
+							</c:when>
+							<c:when test="${ weather.celsiusLow <= -6 }">
+								<p>Danger!Frigid temperature!</p>
+							</c:when>
+							<c:when test="${ weather.forecast == 'sunny' }">
+								<p>Please pack sunblock!</p>
+								<c:if test="${weather.celsiusHigh >= 24}">
+									<p>Please bring an extra gallon of water!</p>
+								</c:if>
+							</c:when>
+						</c:choose>
+
+
 					</c:otherwise>
 				</c:choose>
-				
-				 <c:if test="${(weather.fahrenheitHigh - weather.fahrenheitLow) > 20}">
-	    			<p>Please wear breathable layers!</p>
-    			</c:if>
-				
-				<c:choose>
-					<c:when test="${ weather.forecast == 'snow' }">
-						<p>Please pack snowshoes!</p>
-					</c:when>
-					<c:when test="${ weather.forecast == 'rain' }">
-						<p>Please pack rain gear and wear waterproof shoes!</p>
-					</c:when>
-					<c:when test="${ weather.forecast == 'thunderstorms' }">
-						<p>Please seek shelter and avoid hiking on exposed ridges!</p>
-					</c:when>
-					<c:when test="${ weather.forecast == 'sun' }">
-						<p>Please pack sunblock!</p>
-						<c:if test="${weather.fahrenheitHigh >= 75}">
-			    			<p>Please bring an extra gallon of water!</p>
-		    			</c:if>
-					</c:when>
-				</c:choose>	
-				
+
 			</div>		
 		</c:forEach>
 		
